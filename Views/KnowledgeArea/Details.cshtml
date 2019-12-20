@@ -1,0 +1,71 @@
+﻿@model PmbokApp.Models.PMKnowledgeArea
+
+@{
+    ViewBag.Title = "KnowledgeArea";
+}
+
+<h2>Knowledge Area</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+    </dl>
+</div>
+<div class="row">
+<div class="col-md-4">
+    <h3>Processes:</h3>
+    <p>
+    @foreach (string ProcessTitle in Model.ProcessesTitles)
+    {
+        <span>@ProcessTitle</span><br />
+    }
+    </p>
+</div>
+<div class="col-md-4">
+    <h3>Artefacts:</h3>
+    <p>
+        @if (Model.ArtefactsTitles.Count > 0)
+        {
+            foreach (string ArtefactTitle in Model.ArtefactsTitles)
+            {
+            <span>@ArtefactTitle</span><br />
+            }
+        } else
+        {
+            <span>There no relationships with any artefacts for this knowledgw area in the database yet</span>
+        }
+    </p>
+</div>
+<div class="col-md-4">
+    <h3>Tools:</h3>
+    <p>
+        @if (Model.ToolsTitles.Count > 0)
+        {
+            foreach (string ToolTitle in Model.ToolsTitles)
+            {
+                <span>@ToolTitle</span><br />
+            }
+        }
+        else
+        {
+            <span>There no relationships with any tools for this knowledgw area in the database yet</span>
+        }
+    </p>
+</div>
+</div>
